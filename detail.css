@@ -1,3 +1,11 @@
+/* Body & wrapper */
+body {
+  background-color: #000; /* nền đen */
+  color: #fff;           /* chữ sáng nổi bật */
+  font-family: Inter, sans-serif;
+  margin: 0;
+  padding: 24px;
+}
 .wrap {
   max-width: 900px;
   margin: 0 auto;

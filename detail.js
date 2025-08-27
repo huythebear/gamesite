@@ -4,7 +4,7 @@ const games = [
     title: "No Mercy V1.03a",
     desc: "Game bạo lực + khiêu dâm, cân nhắc khi chơi.",
     image: "images/nomercy.png",
-    screenshots: ["images/nomercy1.png","images/nomercy2.png","images/nomercy3.png","images/nomercy4.png"],
+    screenshots: ["images/nomercy1.png","images/nomercy2.png","images/nomercy3.png","images/nomercy4.png","images/nomercy5.png"],
     intro: `
       No Mercy là một trò chơi hành động kết hợp yếu tố bạo lực và người lớn.
       Trong game, bạn sẽ trải qua nhiều màn chơi đầy thử thách, sử dụng vũ khí đa dạng.
