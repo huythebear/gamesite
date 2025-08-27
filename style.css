@@ -14,4 +14,20 @@ input{padding:8px 12px;border-radius:10px;border:1px solid #23272f;background:#0
   transform: scale(1.05);
   transition: transform 0.2s;
 }
-
+footer {
+  margin-top:22px;
+  color: var(--muted);
+  font-size:13px;
+  text-align: center; /* <-- canh giữa */
+}
+.views-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+}
