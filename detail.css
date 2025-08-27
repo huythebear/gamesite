@@ -1,0 +1,43 @@
+/* Hình ảnh lớn đại diện game */
+.thumb-detail {
+  width: 100%;
+  max-width: 800px;
+  margin: 20px 0;      /* <-- tăng khoảng cách trên và dưới */
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+/* Phần giới thiệu */
+.intro {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #e8eef6;
+  margin-bottom: 20px;  /* <-- khoảng cách dưới intro */
+  padding: 0 8px;       /* <-- khoảng cách hai bên */
+}
+
+/* Các screenshot */
+.screenshots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;           /* <-- khoảng cách giữa các ảnh */
+  margin-bottom: 20px; /* <-- khoảng cách dưới screenshots */
+}
+
+.screenshots img {
+  width: calc(50% - 6px);
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+/* Nút tải */
+.btn-download {
+  display: inline-block;
+  padding: 12px 18px;
+  background: var(--accent);
+  color: #05203a;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  margin-bottom: 30px; /* <-- cách dưới chân trang */
+}
