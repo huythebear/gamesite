@@ -10,7 +10,7 @@ const grid = document.getElementById('grid');
 function render(list){
   grid.innerHTML = list.map(g => `
     <article class="card">
-      <a href="detail.html?id=${g.id}" style="text-decoration:none;color:inherit;position:relative;display:block;" onclick="incrementView(${g.id})">
+      <a href="detail.html?id=${g.id}" target="_blank" style="text-decoration:none;color:inherit;position:relative;display:block;" onclick="incrementView(${g.id}); return true;">
         <img class="thumb" src="${g.image}" alt="${g.title}">
         <span class="views-badge" id="views-${g.id}">👁️ ${g.views}</span>
         <h3 class="title">${g.title}</h3>
