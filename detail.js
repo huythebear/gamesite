@@ -34,3 +34,28 @@ if(game){
 } else {
   container.innerHTML = `<h1>Game không tìm thấy 😢</h1>`;
 }
+<div class="screenshots">
+  ${game.screenshots.map((img,i) => `<img src="${img}" alt="${game.title}" class="thumb-detail clickable" data-index="${i}">`).join('')}
+</div>
+
+// Lấy tất cả ảnh screenshot
+const clickableImgs = document.querySelectorAll('.clickable');
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.querySelector('.lightbox-img');
+const closeBtn = document.querySelector('.lightbox .close');
+
+clickableImgs.forEach(img => {
+  img.addEventListener('click', () => {
+    lightbox.style.display = 'flex';
+    lightboxImg.src = img.src;
+  });
+});
+
+closeBtn.addEventListener('click', () => {
+  lightbox.style.display = 'none';
+});
+
+// Click ngoài ảnh cũng đóng
+lightbox.addEventListener('click', e => {
+  if(e.target === lightbox) lightbox.style.display = 'none';
+});
