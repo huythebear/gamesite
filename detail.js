@@ -11,10 +11,10 @@ const games = [
       audience: "Người trưởng thành (18+), cân nhắc trước khi chơi",
       graphics: "2D/3D pha trộn"
     },
-    story: "Cốt truyện game No Mercy cực kì gây tranh cãi, người chơi nhập vai nam chính tương tác với thế giới bạo lực và nhạy cảm.",
-    gameplay: "- Tương tác & sinh tồn.\n- Hoàn thành nhiệm vụ.\n- Khám phá cốt truyện, mở khóa cảnh 18+.",
+    story: "Đây là một trò chơi 3D được phát triển bởi Zerat Games, cho phép người chơi vào vai một nhân vật nam thực hiện các hành vi bạo lực và tình dục đối với phụ nữ, bao gồm cả cưỡng hiếp và giết người.\nTrò chơi đã bị chỉ trích mạnh mẽ và bị gỡ bỏ khỏi nền tảng Steam sau khi nhận được phản hồi tiêu cực từ cộng đồng.",
+    gameplay: "- Tương tác .\n- Hoàn thành nhiệm vụ.\n- Khám phá cốt truyện, mở khóa cảnh 18+.",
     highlights: "- Tương tác sâu, cảnh 18+ lồng ghép.\n- Phong cách riêng, nguy hiểm nhưng lôi cuốn.",
-    warning: "💡 Lưu ý: Game cực kỳ nhạy cảm, không chơi nơi công cộng.",
+    warning: "💡 Nội dung cực kỳ bạo lực và không phù hợp, khuyến khích hành vi bạo lực và phân biệt giới tính.\nChuyển ngôn ngữ sang LilitaOne để Việt hóa.",
     link:"https://drive.google.com/uc?export=download&id=FILE_ID_1"
   },
   { 
