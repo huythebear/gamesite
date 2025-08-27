@@ -3,7 +3,12 @@ const games = [
     title:"No Mercy V1.03a", 
     desc:"Game bạo lực + khiêu dâm.", 
     image:"images/nomercy.png", 
-    views: 0}
+    views: 0},
+   { id:2, 
+    title:"Dark Quest V2.0", 
+    desc:"bb",
+    image:"images/darkquest.png",
+    views: 0},
 ];
 
 const grid = document.getElementById('grid');
