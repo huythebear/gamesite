@@ -7,40 +7,52 @@
 <link rel="stylesheet" href="detail.css">
 </head>
 <body>
-<div class="wrap" id="detail-container"></div> <!-- id đúng là detail-container -->
-<script src="detail.js"></script>
 
+<div class="wrap" id="detail-container"></div> <!-- id chuẩn -->
+
+<!-- Lightbox overlay -->
+<div id="lightbox" class="lightbox">
+  <span class="close">&times;</span>
+  <img class="lightbox-img">
+</div>
+
+<!-- JS render game -->
 <script>
 const games = [
-  { id:1, 
+  { 
+    id:1, 
     title:"No Mercy V1.03a", 
     desc:"Game bạo lực + khiêu dâm.", 
     image:"images/nomercy.png", 
-    link:"https://drive.google.com/uc?export=download&id=FILE_ID_1" },
+    link:"https://drive.google.com/uc?export=download&id=FILE_ID_1" 
+  },
 ];
 
 const params = new URLSearchParams(window.location.search);
 const id = parseInt(params.get('id'));
 const game = games.find(g=>g.id===id);
 
-const container = document.getElementById('detail');
+const container = document.getElementById('detail-container'); // sửa id đúng
 
 if(game){
   container.innerHTML = `
     <h1>${game.title}</h1>
-    <img src="${game.image}" alt="${game.title}">
+    <img src="${game.image}" alt="${game.title}" class="thumb-detail">
     <p>${game.desc}</p>
-    <a href="${game.link}" target="_blank" style="display:inline-block;margin-top:16px;padding:10px 16px;background:var(--accent);color:#05203a;border-radius:10px;text-decoration:none;">⬇️ Tải về</a>
+    <a href="${game.link}" target="_blank" style="
+      display:inline-block;
+      margin-top:16px;
+      padding:10px 16px;
+      background:#3ea6ff;
+      color:#05203a;
+      border-radius:10px;
+      text-decoration:none;
+    ">⬇️ Tải về</a>
   `;
 }else{
   container.innerHTML = `<h1>Game không tìm thấy 😢</h1>`;
 }
-
 </script>
+
 </body>
 </html>
-<!-- Lightbox overlay -->
-<div id="lightbox" class="lightbox">
-  <span class="close">&times;</span>
-  <img class="lightbox-img">
-</div>
