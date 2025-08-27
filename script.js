@@ -1,14 +1,8 @@
 const games = [
-  { id:1,
-    title:"No Mercy V1.03a", 
-    desc:"Game bạo lực + khiêu dâm.", 
-    image:"images/nomercy.png", 
-    views: 0},
-   { id:2, 
-    title:"Dark Quest V2.0", 
-    desc:"bb",
-    image:"images/darkquest.png",
-    views: 0},
+  { id:1, title:"No Mercy V1.03a", desc:"Game bạo lực + khiêu dâm.", image:"images/nomercy.png", views:0 },
+  { id:2, title:"Dark Quest V2.0", desc:"Phiêu lưu RPG máu me", image:"images/darkquest.png", views:0 },
+  { id:3, title:"Mystic Adventure", desc:"Phiêu lưu, nhiệm vụ ma thuật", image:"images/mystic.png", views:0 },
+  { id:4, title:"Zombie Slayer", desc:"Bắn zombie, sinh tồn 18+", image:"images/zombie.png", views:0 },
 ];
 
 const grid = document.getElementById('grid');
@@ -16,7 +10,7 @@ const grid = document.getElementById('grid');
 function render(list){
   grid.innerHTML = list.map(g => `
     <article class="card">
-      <a href="detail.html?id=${g.id}" target="_blank" style="text-decoration:none;color:inherit;position:relative;display:block;" onclick="incrementView(${g.id})">
+      <a href="detail.html?id=${g.id}" style="text-decoration:none;color:inherit;position:relative;display:block;" onclick="incrementView(${g.id})">
         <img class="thumb" src="${g.image}" alt="${g.title}">
         <span class="views-badge" id="views-${g.id}">👁️ ${g.views}</span>
         <h3 class="title">${g.title}</h3>
@@ -30,11 +24,17 @@ function incrementView(id){
   const game = games.find(g => g.id === id);
   if(game){
     game.views += 1;
-    localStorage.setItem('views_' + id, game.views); // lưu tạm trên trình duyệt
+    localStorage.setItem('views_' + id, game.views);
     const badge = document.getElementById('views-' + id);
     if(badge) badge.textContent = `👁️ ${game.views}`;
   }
 }
+
+// Load views từ localStorage
+games.forEach(g => {
+  const stored = localStorage.getItem('views_' + g.id);
+  if(stored) g.views = parseInt(stored);
+});
 
 render(games);
 
@@ -43,9 +43,3 @@ document.getElementById('search').addEventListener('input', e=>{
   const f = games.filter(g=> (g.title+g.desc).toLowerCase().includes(q));
   render(f);
 });
-games.forEach(g => {
-  const stored = localStorage.getItem('views_' + g.id);
-  if(stored) g.views = parseInt(stored);
-}
-
-);
