@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Kho Game Mini</title>
+<style>
+  :root { --bg:#0f1115; --card:#151922; --muted:#9aa3b2; --accent:#3ea6ff; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:#e8eef6;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;padding:24px}
+  .wrap{max-width:1100px;margin:0 auto}
+  header{display:flex;gap:12px;align-items:center;justify-content:space-between;margin-bottom:20px}
+  h1{font-size:24px;margin:0}
+  .search{background:#0a0b0f;border:1px solid #23272f;padding:8px 12px;border-radius:10px;color:inherit}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+  .card{background:var(--card);padding:14px;border-radius:12px;border:1px solid #232733;display:flex;flex-direction:column;gap:10px;transition:transform .16s}
+  .card:hover{transform:translateY(-6px)}
+  .thumb{width:100%;height:140px;border-radius:10px;object-fit:cover;background:#0b0c0f}
+  .title{font-weight:600;margin:0;font-size:16px}
+  .desc{font-size:13px;color:var(--muted);margin:0}
+  .btn-row{margin-top:auto;display:flex;gap:8px;align-items:center}
+  .btn{padding:8px 12px;border-radius:10px;background:var(--accent);color:#05203a;text-decoration:none;font-weight:600;border:0}
+  .meta{font-size:12px;color:var(--muted)}
+  footer{margin-top:22px;color:var(--muted);font-size:13px;text-align:center}
+  @media (max-width:420px){ .thumb{height:120px} h1{font-size:20px} }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>📂 Kho Game Mini</h1>
+      <input id="q" class="search" placeholder="Tìm game... (ví dụ: Vampire)" />
+    </header>
+
+    <main id="grid" class="grid"></main>
+
+    <footer>
+      Lưu ý: các link tải từ Google Drive. File lớn có thể hiển thị cảnh báo download từ Google.
+    </footer>
+  </div>
+
+<script>
+/* ===== Dữ liệu game: dễ sửa =====
+   image: đặt file ảnh vào thư mục images/, hoặc dùng link ngoài
+   link: đổi FILE_ID_x thành ID file Drive => sử dụng URL kiểu
+         https://drive.google.com/uc?export=download&id=FILE_ID
+*/
+const games = [
+  {
+    id: 1,
+    title: "Vampire Survivors",
+    desc: "Game hành động sinh tồn gây nghiện — demo.",
+    image: "images/vampire.jpg",
+    link: "https://drive.google.com/uc?export=download&id=FILE_ID_1"
+  },
+  {
+    id: 2,
+    title: "Drow Ranger Skin T1",
+    desc: "Skin minh họa cho fan Dota.",
+    image: "images/drow.jpg",
+    link: "https://drive.google.com/uc?export=download&id=FILE_ID_2"
+  }
+];
+
+/* Render */
+const grid = document.getElementById('grid');
+function render(list){
+  grid.innerHTML = list.map(g => `
+    <article class="card" data-title="${escapeHtml(g.title)}" >
+      <img class="thumb" src="${g.image}" alt="${escapeHtml(g.title)}" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=600 height=320><rect width=100% height=100% fill=%230f1115 /><text x=50% y=50% fill=%23ddd font-size=20 text-anchor=middle dominant-baseline=middle>Ảnh không tìm thấy</text></svg>" />
+      <div>
+        <h3 class="title">${escapeHtml(g.title)}</h3>
+        <p class="desc">${escapeHtml(g.desc)}</p>
+      </div>
+      <div class="btn-row">
+        <a class="btn" href="${g.link}" target="_blank" rel="noopener noreferrer">⬇️ Tải về</a>
+        <span class="meta">Kích thước & other info trên Drive</span>
+      </div>
+    </article>
+  `).join('');
+}
+function escapeHtml(s){ return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+render(games);
+
+/* Tìm kiếm */
+document.getElementById('q').addEventListener('input', e => {
+  const q = e.target.value.trim().toLowerCase();
+  if(!q) return render(games);
+  const f = games.filter(g => (g.title+g.desc).toLowerCase().includes(q));
+  render(f);
+});
+</script>
+</body>
+</html>
