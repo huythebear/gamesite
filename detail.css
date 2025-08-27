@@ -6,11 +6,12 @@ body {
   margin: 0;
   padding: 24px;
 }
+
 .wrap {
   max-width: 900px;
   margin: 0 auto;
   padding: 24px;
-  color: #000000;
+  color: #fff; /* chữ sáng nhìn rõ trên nền đen */
   font-family: Inter, sans-serif;
 }
 
@@ -25,46 +26,65 @@ h1 {
   max-width: 100%;
   border-radius: 12px;
   object-fit: cover;
-  margin-bottom: 20px; /* cách chữ và ảnh ra */
+  margin-bottom: 20px; 
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.thumb-detail:hover {
+  transform: scale(1.03); /* phóng to nhẹ khi hover */
 }
 
 .intro {
   font-size: 16px;
   line-height: 1.6;
   margin-bottom: 20px;
-  padding: 0 8px; /* khoảng cách 2 bên */
+  padding: 0 8px; 
 }
 
 .screenshots {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px; /* khoảng cách giữa các ảnh */
+  gap: 12px;
   margin-bottom: 20px;
 }
 
 .screenshots img {
-  width: calc(50% - 6px); /* 2 ảnh 1 hàng, cách đều */
+  width: calc(50% - 6px);
   border-radius: 10px;
   object-fit: cover;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.screenshots img:hover {
+  transform: scale(1.05);
 }
 
 .btn-download {
   display: inline-block;
   padding: 12px 18px;
-  background: #3ea6ff; /* accent */
+  background: #3ea6ff; 
   color: #05203a;
   border-radius: 10px;
   text-decoration: none;
   font-weight: 600;
-  margin-bottom: 30px; /* cách cuối trang */
+  margin-bottom: 30px; 
   text-align: center;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.btn-download:hover {
+  transform: scale(1.05);
+  background: #00b0ff;
 }
 
 @media (max-width:600px){
   .screenshots img {
-    width: 100%; /* trên mobile, mỗi ảnh 1 hàng */
+    width: 100%;
   }
 }
+
 /* Lightbox overlay */
 .lightbox {
   display: none;
@@ -74,9 +94,10 @@ h1 {
   top: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.9);
+  background: rgba(0,0,0,0.95);
   justify-content: center;
   align-items: center;
+  transition: opacity 0.3s ease;
 }
 
 .lightbox-img {
@@ -93,5 +114,9 @@ h1 {
   font-size: 40px;
   font-weight: bold;
   cursor: pointer;
+  transition: color 0.2s ease;
 }
 
+.lightbox .close:hover {
+  color: #ff4d6d;
+}

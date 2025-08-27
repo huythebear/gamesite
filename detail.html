@@ -30,37 +30,46 @@ const games = [
 
 const params = new URLSearchParams(window.location.search);
 const id = parseInt(params.get('id'));
-const game = games.find(g=>g.id===id);
+
 const container = document.getElementById('detail-container');
 
-if(game){
-  container.innerHTML = `
-    <h1>${game.title}</h1>
-    <img src="${game.image}" alt="${game.title}" class="thumb-detail clickable">
-    <p>${game.desc}</p>
-    <div class="screenshots">
-      ${game.screenshots.map(img => `<img src="${img}" alt="${game.title}" class="thumb-detail clickable">`).join('')}
-    </div>
-    <a href="${game.link}" target="_blank" class="btn-download">⬇️ Tải về</a>
-  `;
+if(isNaN(id)){
+  container.innerHTML = `<h1>Id game không hợp lệ 😢</h1>`;
+} else {
+  const game = games.find(g => g.id === id);
 
-  const clickableImgs = document.querySelectorAll('.clickable');
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.querySelector('.lightbox-img');
-  const closeBtn = document.querySelector('.lightbox .close');
+  if(game){
+    container.innerHTML = `
+      <h1>${game.title}</h1>
+      <img src="${game.image}" alt="${game.title}" class="thumb-detail clickable">
+      <p>${game.desc}</p>
+      <div class="screenshots">
+        ${game.screenshots.map(img => `<img src="${img}" alt="${game.title}" class="thumb-detail clickable">`).join('')}
+      </div>
+      <a href="${game.link}" target="_blank" class="btn-download">⬇️ Tải về</a>
+    `;
 
-  clickableImgs.forEach(img=>{
-    img.addEventListener('click',()=>{
-      lightbox.style.display='flex';
-      lightboxImg.src = img.src;
+    // Chỉ lấy ảnh trong container để tránh lỗi nếu có nhiều game khác
+    const clickableImgs = container.querySelectorAll('.clickable');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.querySelector('.lightbox-img');
+    const closeBtn = lightbox.querySelector('.close');
+
+    clickableImgs.forEach(img=>{
+      img.addEventListener('click', ()=>{
+        lightbox.style.display = 'flex';
+        lightboxImg.src = img.src;
+      });
     });
-  });
 
-  closeBtn.addEventListener('click',()=>{ lightbox.style.display='none'; });
-  lightbox.addEventListener('click',e=>{ if(e.target===lightbox) lightbox.style.display='none'; });
+    closeBtn.addEventListener('click', ()=>{ lightbox.style.display='none'; });
+    lightbox.addEventListener('click', e=>{
+      if(e.target === lightbox) lightbox.style.display='none';
+    });
 
-}else{
-  container.innerHTML = `<h1>Game không tìm thấy 😢</h1>`;
+  } else {
+    container.innerHTML = `<h1>Game không tìm thấy 😢</h1>`;
+  }
 }
 </script>
 
