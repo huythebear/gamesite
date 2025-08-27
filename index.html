@@ -28,7 +28,7 @@
 <body>
   <div class="wrap">
     <header>
-      <h1> Kho Game Mini Việt Hóa </h1>
+      <h1>Kho Game Mini Việt Hóa</h1>
       <input id="q" class="search" placeholder="Tìm game... " />
     </header>
 
@@ -40,31 +40,30 @@
   </div>
 
 <script>
-/* ===== Dữ liệu game: dễ sửa =====
-   image: đặt file ảnh vào thư mục images/, hoặc dùng link ngoài
-   link: đổi FILE_ID_x thành ID file Drive => sử dụng URL kiểu
-         https://drive.google.com/uc?export=download&id=FILE_ID
-*/
 const games = [
   {
     id: 1,
     title: "No Mercy V1.03a",
-    desc: "No Mercy , một trò chơi điện tử bạo lực và khiêu dâm, cổ súy cho nạn hiếp dâm và loạn luân. CÂN NHẮC KHI CHƠI.",
+    desc: "No Mercy, một trò chơi điện tử bạo lực và khiêu dâm. Cân nhắc khi chơi.",
     image: "images/nomercy.jpg",
     link: "https://drive.google.com/uc?export=download&id=FILE_ID_1"
   }
 ];
 
-/* Render */
 const grid = document.getElementById('grid');
+
+function escapeHtml(s){ return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
 function render(list){
   grid.innerHTML = list.map(g => `
-    <article class="card" data-title="${escapeHtml(g.title)}" >
-      <img class="thumb" src="${g.image}" alt="${escapeHtml(g.title)}" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=600 height=320><rect width=100% height=100% fill=%230f1115 /><text x=50% y=50% fill=%23ddd font-size=20 text-anchor=middle dominant-baseline=middle>Ảnh không tìm thấy</text></svg>" />
-      <div>
-        <h3 class="title">${escapeHtml(g.title)}</h3>
-        <p class="desc">${escapeHtml(g.desc)}</p>
-      </div>
+    <article class="card" data-title="${escapeHtml(g.title)}">
+      <a href="game-detail.html?id=${g.id}" target="_blank" style="text-decoration:none;color:inherit;">
+        <img class="thumb" src="${g.image}" alt="${escapeHtml(g.title)}" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=600 height=320><rect width=100% height=100% fill=%230f1115 /><text x=50% y=50% fill=%23ddd font-size=20 text-anchor=middle dominant-baseline=middle>Ảnh không tìm thấy</text></svg>'" />
+        <div>
+          <h3 class="title">${escapeHtml(g.title)}</h3>
+          <p class="desc">${escapeHtml(g.desc)}</p>
+        </div>
+      </a>
       <div class="btn-row">
         <a class="btn" href="${g.link}" target="_blank" rel="noopener noreferrer">⬇️ Tải về</a>
         <span class="meta">Kích thước & other info trên Drive</span>
@@ -72,11 +71,9 @@ function render(list){
     </article>
   `).join('');
 }
-function escapeHtml(s){ return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 
 render(games);
 
-/* Tìm kiếm */
 document.getElementById('q').addEventListener('input', e => {
   const q = e.target.value.trim().toLowerCase();
   if(!q) return render(games);
@@ -86,5 +83,3 @@ document.getElementById('q').addEventListener('input', e => {
 </script>
 </body>
 </html>
-
-
