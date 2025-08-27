@@ -39,8 +39,11 @@ h1 {
   font-size: 16px;
   line-height: 1.6;
   margin-bottom: 20px;
-  padding: 0 8px; 
+  padding: 0 8px;
+  color: #fff; /* chữ sáng trên nền đen */
+  white-space: pre-line; /* giữ xuống dòng template string */
 }
+
 
 .screenshots {
   display: flex;
