@@ -41,6 +41,7 @@ if(game){
       lightbox.style.display = 'flex';
       lightboxImg.src = img.src;
     });
+    img.onerror = () => img.src = 'images/placeholder.png';
   });
 
   closeBtn.addEventListener('click', () => {
