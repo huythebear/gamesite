@@ -2,7 +2,7 @@ const games = [
   { id:1,
     title:"No Mercy V1.03a", 
     desc:"Game bạo lực + khiêu dâm.", 
-    image:"images/nomercy.jpg", 
+    image:"images/nomercy.png", 
     link:"https://drive.google.com/uc?export=download&id=FILE_ID_1" },
 ];
 
