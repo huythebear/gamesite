@@ -1,43 +1,59 @@
-/* Hình ảnh lớn đại diện game */
-.thumb-detail {
-  width: 100%;
-  max-width: 800px;
-  margin: 20px 0;      /* <-- tăng khoảng cách trên và dưới */
-  border-radius: 12px;
-  object-fit: cover;
+.wrap {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px;
+  color: #e8eef6;
+  font-family: Inter, sans-serif;
 }
 
-/* Phần giới thiệu */
+h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.thumb-detail {
+  width: 100%;
+  max-width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+  margin-bottom: 20px; /* cách chữ và ảnh ra */
+}
+
 .intro {
   font-size: 16px;
   line-height: 1.6;
-  color: #e8eef6;
-  margin-bottom: 20px;  /* <-- khoảng cách dưới intro */
-  padding: 0 8px;       /* <-- khoảng cách hai bên */
+  margin-bottom: 20px;
+  padding: 0 8px; /* khoảng cách 2 bên */
 }
 
-/* Các screenshot */
 .screenshots {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;           /* <-- khoảng cách giữa các ảnh */
-  margin-bottom: 20px; /* <-- khoảng cách dưới screenshots */
+  gap: 12px; /* khoảng cách giữa các ảnh */
+  margin-bottom: 20px;
 }
 
 .screenshots img {
-  width: calc(50% - 6px);
+  width: calc(50% - 6px); /* 2 ảnh 1 hàng, cách đều */
   border-radius: 10px;
   object-fit: cover;
 }
 
-/* Nút tải */
 .btn-download {
   display: inline-block;
   padding: 12px 18px;
-  background: var(--accent);
+  background: #3ea6ff; /* accent */
   color: #05203a;
   border-radius: 10px;
   text-decoration: none;
   font-weight: 600;
-  margin-bottom: 30px; /* <-- cách dưới chân trang */
+  margin-bottom: 30px; /* cách cuối trang */
+  text-align: center;
+}
+
+@media (max-width:600px){
+  .screenshots img {
+    width: 100%; /* trên mobile, mỗi ảnh 1 hàng */
+  }
 }
