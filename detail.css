@@ -21,6 +21,49 @@ h1 {
   text-align: center;
 }
 
+/* Tổng quan game */
+.overview {
+  background: #111; /* nền tối hơn, sexy */
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  line-height: 1.6;
+  color: #fff;
+}
+
+.overview p {
+  margin: 6px 0;
+}
+
+/* Section cốt truyện, gameplay, điểm nổi bật */
+.section {
+  background: #111;
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  line-height: 1.6;
+  color: #fff;
+}
+
+.section h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 20px;
+  color: #3ea6ff; /* highlight sexy cho tiêu đề */
+}
+
+/* Cảnh báo game */
+.warning {
+  background: #330000;
+  color: #ff4d6d;
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  line-height: 1.5;
+}
+
+/* Ảnh thumb & hover */
 .thumb-detail {
   width: 100%;
   max-width: 100%;
@@ -34,16 +77,6 @@ h1 {
 .thumb-detail:hover {
   transform: scale(1.03); /* phóng to nhẹ khi hover */
 }
-
-.intro {
-  font-size: 16px;
-  line-height: 1.6;
-  margin-bottom: 20px;
-  padding: 0 8px;
-  color: #fff; /* chữ sáng trên nền đen */
-  white-space: pre-line; /* giữ xuống dòng template string */
-}
-
 
 .screenshots {
   display: flex;
@@ -64,6 +97,7 @@ h1 {
   transform: scale(1.05);
 }
 
+/* Nút tải về */
 .btn-download {
   display: inline-block;
   padding: 12px 18px;
@@ -82,6 +116,7 @@ h1 {
   background: #00b0ff;
 }
 
+/* Mobile responsive */
 @media (max-width:600px){
   .screenshots img {
     width: 100%;
